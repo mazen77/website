@@ -179,8 +179,8 @@ function startThree(){
     group.position.x = (p-0.5)*0.35;
   }, { passive:true });
 }
-// startThree removed (Three.js disabled)
-
+// startThree disabled (replaced by lotties)
+// startThree();
 
 /* Scroll progress */
 (function(){
@@ -516,7 +516,7 @@ $$(".toggle[data-lang]").forEach(btn=>btn.addEventListener("click", ()=>{
   setTimeout(()=>boot(), 0);
 }));
 
-/* === Lottie GitHub-ready init === */
+/* === MAZEN_LOTTIE_REMAKE === */
 document.addEventListener("DOMContentLoaded", () => {
   const load = (id, file, opts = {}) => {
     const el = document.getElementById(id);
@@ -530,83 +530,61 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Ambient lotties
-  load("lottieLoader", "tea-loader.json", { loop: true, autoplay: true });
-  load("lottieCode", "code-dark.json", { loop: true, autoplay: true });
-  load("lottieTabs", "ios-tabs.json", { loop: true, autoplay: true });
-  load("lottieSpin", "spin.json", { loop: true, autoplay: true });
+  // Theme (data-theme) persistence
+  const root = document.documentElement;
+  const stored = localStorage.getItem("theme");
+  if (stored === "light" || stored === "dark") root.setAttribute("data-theme", stored);
 
-  // Theme toggle lottie: play forward/back based on current theme state (best-effort)
+  // Toggle Lottie (play forward/back)
   const toggleAnim = load("lottieToggle", "toggle.json", { loop: false, autoplay: false });
-  const btn = document.getElementById("themeToggle");
-  const getTheme = () => document.documentElement.getAttribute("data-theme") || "dark";
-  const setToggleFrame = (isLight) => {
-    if (!toggleAnim) return;
-    toggleAnim.addEventListener("DOMLoaded", () => {
-      const total = Math.max(1, toggleAnim.getDuration(true));
-      toggleAnim.goToAndStop(isLight ? total : 0, true);
-    }, { once: true });
-  };
+  const toggleBtn = document.getElementById("themeToggleLottie");
+  const isLight = () => (root.getAttribute("data-theme") === "light");
 
-  // If your site already has theme logic, we just sync the lottie to it.
-  setToggleFrame(getTheme() === "light");
-
-  if (btn && toggleAnim) {
-    btn.addEventListener("click", () => {
-      const isLight = getTheme() === "light";
-      const total = Math.max(1, toggleAnim.getDuration(true));
-      // play toggle in correct direction
-      toggleAnim.setDirection(isLight ? -1 : 1);
-      toggleAnim.play();
-      // NOTE: your existing theme toggler should still run. If not, you'll still get the lottie motion.
-    });
-  }
-});
-
-/* === Theme toggle: robust animation + theme switching === */
-document.addEventListener("DOMContentLoaded", () => {
-  const btn = document.getElementById("themeToggleLottie") || document.getElementById("themeToggle");
-  const animEl = document.getElementById("lottieToggle");
-  const setTheme = (t) => document.documentElement.setAttribute("data-theme", t);
-  const getTheme = () => document.documentElement.getAttribute("data-theme") || "dark";
-
-  let toggleAnim = null;
-  if (animEl && typeof lottie !== "undefined") {
-    toggleAnim = lottie.loadAnimation({
-      container: animEl,
-      renderer: "svg",
-      loop: false,
-      autoplay: false,
-      path: "assets/lottie/toggle.json"
-    });
-  }
-
-  const syncFrame = (isLight) => {
+  const syncToggleFrame = () => {
     if (!toggleAnim) return;
     const total = Math.max(1, toggleAnim.getDuration(true));
-    toggleAnim.goToAndStop(isLight ? total : 0, true);
+    toggleAnim.goToAndStop(isLight() ? total : 0, true);
   };
 
   if (toggleAnim) {
-    toggleAnim.addEventListener("DOMLoaded", () => {
-      syncFrame(getTheme() === "light");
-    });
+    toggleAnim.addEventListener("DOMLoaded", syncToggleFrame, { once: true });
   }
-
-  if (btn) {
-    btn.addEventListener("click", () => {
-      const isLight = getTheme() === "light";
-      const next = isLight ? "dark" : "light";
-      setTheme(next);
+  if (toggleBtn) {
+    toggleBtn.addEventListener("click", () => {
+      const next = isLight() ? "dark" : "light";
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
 
       if (toggleAnim) {
         const total = Math.max(1, toggleAnim.getDuration(true));
-        // play from current end to other end
+        // set direction based on next state (light -> forward)
         toggleAnim.stop();
-        toggleAnim.goToAndStop(isLight ? total : 0, true);
-        toggleAnim.setDirection(isLight ? -1 : 1);
+        toggleAnim.setDirection(next === "light" ? 1 : -1);
+        toggleAnim.goToAndStop(next === "light" ? 0 : total, true);
         toggleAnim.play();
       }
     });
   }
+
+  // Milk cup scroll-driven (centered)
+  const cup = load("lottieCup", "milk-cup.json", { loop: false, autoplay: false });
+  if (cup) {
+    cup.addEventListener("DOMLoaded", () => {
+      const total = Math.max(1, cup.getDuration(true));
+      const onScroll = () => {
+        const doc = document.documentElement;
+        const max = (doc.scrollHeight - window.innerHeight) || 1;
+        const p = Math.min(1, Math.max(0, window.scrollY / max));
+        cup.goToAndStop(p * total, true);
+      };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    });
+  }
+
+  // Section/ambient lotties
+  load("lottieDividerTea", "tea-loader.json", { loop: true, autoplay: true });
+  load("lottieCode", "code-dark.json", { loop: true, autoplay: true });
+  load("lottieTabs", "ios-tabs.json", { loop: true, autoplay: true });
+  load("lottieSpin", "spin.json", { loop: true, autoplay: true });
 });
