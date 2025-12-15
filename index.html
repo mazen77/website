@@ -14,7 +14,8 @@
 </head>
 <body>
   <canvas id="matrix" aria-hidden="true"></canvas>
-    <div class="vignette" aria-hidden="true"></div>
+  
+  <div class="vignette" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
   <!-- Top Social Bar (always visible) -->
@@ -56,11 +57,7 @@
   <main class="container">
     <section class="hero">
       <div class="hero-grid">
-        <div class="hero-lottie" aria-hidden="true">
-          <div id="lottieCup" class="lottie lottie-cup"></div>
-          <div id="lottieOrbit" class="lottie lottie-orbit"></div>
-        </div>
-
+<div class="hero-lottie"><div id="lottieCup"></div><div id="lottieSpin"></div></div>
         <div class="hero-copy">
           <div class="kicker"><span class="dot"></span><span data-i18n="kicker">Cinematic. Fast. Reliable.</span></div>
           <h1 data-i18n="hero_title">من أول سكرول…<br/>تحس إن الموقع “مستوى أعلى”.</h1>
@@ -71,10 +68,7 @@
             <a class="btn ghost" href="#mediakit" data-i18n="cta_mediakit">الميديا كِت</a>
           </div>
 
-          <div class="metrics-wrap">
-            <div id="lottiePulse" class="lottie lottie-pulse" aria-hidden="true"></div>
-            <div class="metrics" id="metrics"></div>
-          </div>
+          <div class="metrics" id="metrics"></div>
 
           <div class="fine" id="asof" data-i18n="asof">الأرقام المعروضة مأخوذة من مصادر عامة وملفك — ويمكن تحديثها بسهولة.</div>
         </div>
@@ -108,7 +102,6 @@
         <h2 data-i18n="websites_title">Websites I worked on</h2>
         <p data-i18n="websites_sub">تم استبدال Centerial Mall بالمواقع الحقيقية + قسم لإضافة أي مواقع من النسخة السابقة.</p>
       </div>
-      <div id="lottieDivider" class="lottie lottie-divider" aria-hidden="true"></div>
       <div class="cards" id="websitesGrid"></div>
       <div class="hint" data-i18n="websites_hint">لإضافة مواقع أكثر: افتح data.json وأضف داخل websites[] — أو ارفع قائمة الدومينات.</div>
     </section>
@@ -174,7 +167,6 @@
       <div class="contact-card">
         <h2 data-i18n="contact_title">Contact</h2>
         <p data-i18n="contact_sub">تواصل للتعاون أو إدارة منصات أو حملات محتوى.</p>
-        <div class="contact-beacon-wrap" aria-hidden="true"><div id="lottieBeacon" class="lottie lottie-beacon"></div></div>
         <div class="contact-row">
           <a class="btn primary" id="contactEmail" target="_blank" rel="noopener"></a>
           <a class="btn ghost" id="contactPhone" target="_blank" rel="noopener"></a>

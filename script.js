@@ -99,9 +99,6 @@ startMatrix();
 
 /* Three.js cinematic scene */
 function startThree(){
-  const mount = document.getElementById('three');
-  if(!mount) return;
-
   if (typeof THREE === "undefined") return;
   const host = document.getElementById("three");
   if (!host) return;
@@ -182,8 +179,7 @@ function startThree(){
     group.position.x = (p-0.5)*0.35;
   }, { passive:true });
 }
-// startThree disabled (center object removed)
-// startThree();
+// three disabled
 
 /* Scroll progress */
 (function(){
@@ -519,56 +515,24 @@ $$(".toggle[data-lang]").forEach(btn=>btn.addEventListener("click", ()=>{
   setTimeout(()=>boot(), 0);
 }));
 
-/* Lottie pack: 5 creative animations */
-function loadLottie(id, path, opts={}){
-  const el = document.getElementById(id);
-  if (!el || typeof lottie === "undefined") return null;
-  return lottie.loadAnimation({
-    container: el,
-    renderer: "svg",
-    loop: opts.loop ?? true,
-    autoplay: opts.autoplay ?? true,
-    path
-  });
+function loadLottie(id,file,loop=true,autoplay=true){
+ const el=document.getElementById(id);
+ if(!el||typeof lottie==='undefined')return null;
+ return lottie.loadAnimation({container:el,renderer:'svg',loop,autoplay,path:'assets/lottie/'+file});
 }
+const cup=loadLottie('lottieCup','Milk Cup Animated.json',false,false);
+loadLottie('lottieSpin','Spin.json');
+loadLottie('lottieToggle','Toogle.json');
+loadLottie('lottieLoader','Tea-loader.json');
+loadLottie('lottieCode','Code-dark.json');
+loadLottie('lottieTabs','IOS-tabs.json');
 
-// 1) Cup: scroll-controlled fill + subtle spill at the end
-const cupAnim = loadLottie("lottieCup", "assets/lottie/cup.json", { loop:false, autoplay:false });
-
-// 2) Orbit: ambient loop
-loadLottie("lottieOrbit", "assets/lottie/orbit.json", { loop:true, autoplay:true });
-
-// 3) Pulse: metrics accent
-loadLottie("lottiePulse", "assets/lottie/pulse.json", { loop:true, autoplay:true });
-
-// 4) Divider: section transition
-loadLottie("lottieDivider", "assets/lottie/divider.json", { loop:true, autoplay:true });
-
-// 5) Beacon: contact accent
-loadLottie("lottieBeacon", "assets/lottie/beacon.json", { loop:true, autoplay:true });
-
-function bindCupToScroll(){
-  if (!cupAnim) return;
-  cupAnim.addEventListener("DOMLoaded", () => {
-    const totalFrames = Math.max(1, Math.floor(cupAnim.getDuration(true)));
-    const spillFrames = Math.max(12, Math.floor(totalFrames * 0.10)); // last 10%
-    const fillFrames  = totalFrames - spillFrames;
-
-    const onScroll = () => {
-      const doc = document.documentElement;
-      const max = (doc.scrollHeight - doc.clientHeight) || 1;
-      const p = Math.min(1, Math.max(0, doc.scrollTop / max));
-
-      const cut = 0.92; // fill until 92% scroll, then spill
-      let frame = 0;
-      if (p <= cut) frame = (p / cut) * (fillFrames - 1);
-      else frame = fillFrames + ((p - cut) / (1 - cut)) * (spillFrames - 1);
-
-      cupAnim.goToAndStop(frame, true);
-    };
-
-    window.addEventListener("scroll", onScroll, { passive:true });
-    onScroll();
-  });
+if(cup){
+ cup.addEventListener('DOMLoaded',()=>{
+  window.addEventListener('scroll',()=>{
+   const max=document.body.scrollHeight-innerHeight||1;
+   const p=Math.min(1,scrollY/max);
+   cup.goToAndStop(p*cup.getDuration(true),true);
+  },{passive:true});
+ });
 }
-bindCupToScroll();
