@@ -375,3 +375,38 @@ html[dir="rtl"] .arrow{margin-left:0; margin-right:auto}
 @media (prefers-reduced-motion: reduce){
   *{scroll-behavior:auto !important; transition:none !important; animation:none !important}
 }
+
+/* AI scan overlay */
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:2;
+  background:
+    linear-gradient(to bottom,
+      rgba(91,255,154,0.06),
+      rgba(0,0,0,0) 22%,
+      rgba(0,255,204,0.04) 55%,
+      rgba(0,0,0,0) 80%,
+      rgba(91,255,154,0.06)
+    );
+  mix-blend-mode: overlay;
+  opacity:.25;
+  animation: scan 6.5s ease-in-out infinite;
+}
+@keyframes scan{
+  0%,100%{ transform: translateY(-2%); }
+  50%{ transform: translateY(2%); }
+}
+html[data-theme="light"] body::after{ opacity:.12; }
+
+.mk-meta{ display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.mk-pill{
+  padding:8px 10px; border-radius:999px;
+  border:1px solid rgba(91,255,154,.20);
+  background: rgba(91,255,154,.08);
+  color: var(--muted);
+  font-weight: 900;
+  font-size: 12px;
+}

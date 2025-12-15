@@ -70,39 +70,99 @@
   ],
   "websites": [
     {
-      "name": "diva.sa",
-      "url": "https://diva.sa",
-      "tag": {
-        "en": "E‑commerce / Platform Ops",
-        "ar": "تجارة إلكترونية / تشغيل"
-      },
-      "desc": {
-        "en": "Performance, ops, tracking, and stability improvements.",
-        "ar": "تحسين الأداء والتشغيل والتتبع والاستقرار."
-      }
-    },
-    {
       "name": "naqi.sa",
       "url": "https://naqi.sa",
       "tag": {
-        "en": "Landing + Growth Setup",
-        "ar": "صفحات + تجهيز نمو"
+        "en": "Website / Platform Ops",
+        "ar": "موقع / تشغيل منصة"
       },
       "desc": {
-        "en": "SEO/analytics setup, speed improvements, UX refinements.",
-        "ar": "تهيئة SEO/Analytics، تسريع، وتحسين UX."
+        "en": "Ops + performance + analytics improvements.",
+        "ar": "تحسينات تشغيل وأداء وتحليلات."
       }
     },
     {
-      "name": "EM Store (emstore-sa.com)",
-      "url": "https://emstore-sa.com",
+      "name": "diva.sa",
+      "url": "https://diva.sa",
       "tag": {
-        "en": "Affiliate + Conversion Landing",
-        "ar": "أفلييت + تحويل"
+        "en": "E-commerce / Performance",
+        "ar": "تجارة إلكترونية / أداء"
       },
       "desc": {
-        "en": "Fast landing pages and tracked outbound offers.",
-        "ar": "صفحات سريعة مع تتبع روابط العروض."
+        "en": "Performance, stability, and tracking enhancements.",
+        "ar": "تعزيز الأداء والاستقرار والتتبع."
+      }
+    },
+    {
+      "name": "alkhayalksa.net",
+      "url": "https://alkhayalksa.net",
+      "tag": {
+        "en": "Website / Maintenance",
+        "ar": "موقع / صيانة"
+      },
+      "desc": {
+        "en": "Maintenance, updates, and technical optimizations.",
+        "ar": "صيانة وتحديثات وتحسينات تقنية."
+      }
+    },
+    {
+      "name": "eqlaa.net",
+      "url": "https://eqlaa.net",
+      "tag": {
+        "en": "Website / SEO Setup",
+        "ar": "موقع / تهيئة SEO"
+      },
+      "desc": {
+        "en": "SEO/analytics setup and speed improvements.",
+        "ar": "تهيئة SEO/Analytics وتحسين السرعة."
+      }
+    },
+    {
+      "name": "thezawaya.com",
+      "url": "https://thezawaya.com/",
+      "tag": {
+        "en": "Website / UI & Ops",
+        "ar": "موقع / واجهة وتشغيل"
+      },
+      "desc": {
+        "en": "UI/UX refinements and operational improvements.",
+        "ar": "تحسينات واجهة وتجربة وتشغيل."
+      }
+    },
+    {
+      "name": "themiran.net",
+      "url": "https://themiran.net/",
+      "tag": {
+        "en": "Website / Performance",
+        "ar": "موقع / أداء"
+      },
+      "desc": {
+        "en": "Performance tuning and reliability improvements.",
+        "ar": "ضبط أداء وتحسين الاعتمادية."
+      }
+    },
+    {
+      "name": "ja4t.org",
+      "url": "https://ja4t.org/",
+      "tag": {
+        "en": "Organization Website",
+        "ar": "موقع منظمة"
+      },
+      "desc": {
+        "en": "Content + structure + stability upgrades.",
+        "ar": "ترقية المحتوى والبنية والاستقرار."
+      }
+    },
+    {
+      "name": "kq-lawfirm.com",
+      "url": "https://kq-lawfirm.com/",
+      "tag": {
+        "en": "Law Firm Website",
+        "ar": "موقع مكتب محاماة"
+      },
+      "desc": {
+        "en": "Professional website operations and optimization.",
+        "ar": "تشغيل وتحسين موقع احترافي."
       }
     }
   ],
@@ -190,87 +250,113 @@
     "packages": [
       {
         "name": {
-          "en": "Starter",
-          "ar": "Starter"
+          "en": "Low",
+          "ar": "Low"
         },
         "price": {
-          "en": "From 3,000 SAR",
-          "ar": "ابتداءً من 3,000 ريال"
+          "en": "From 2,500 SAR",
+          "ar": "ابتداءً من 2,500 ريال"
         },
         "items": {
           "en": [
-            "1 short‑form video (TikTok/IG Reels)",
-            "Story set (3 frames)",
-            "Link in bio for 24h"
+            "Post on all social channels (cross-post)",
+            "Repost to Story",
+            "Link in bio (24h)"
           ],
           "ar": [
-            "فيديو قصير (تيك توك/ريلز)",
-            "ستوري (3 إطارات)",
-            "رابط بالبايو لمدة 24 ساعة"
+            "نشر على جميع قنوات السوشيال (Cross‑post)",
+            "إعادة نشر في الستوري",
+            "رابط في البايو (24 ساعة)"
           ]
+        },
+        "usage_rights": {
+          "en": "Usage rights: 7 days",
+          "ar": "حقوق الاستخدام: 7 أيام"
+        },
+        "auth_code": {
+          "en": "Not included",
+          "ar": "غير متضمن"
         }
       },
       {
         "name": {
-          "en": "Growth",
-          "ar": "Growth"
+          "en": "Mid",
+          "ar": "Mid"
         },
         "price": {
-          "en": "From 7,500 SAR",
-          "ar": "ابتداءً من 7,500 ريال"
+          "en": "From 6,500 SAR",
+          "ar": "ابتداءً من 6,500 ريال"
         },
         "items": {
           "en": [
-            "2 short‑form videos",
-            "Story set (6 frames)",
-            "Pinned comment + CTA",
-            "Basic analytics report"
+            "Post on all social channels (cross-post)",
+            "Repost to Story",
+            "Link in bio (72h)",
+            "Authorization code included"
           ],
           "ar": [
-            "فيديوهين قصيرين",
-            "ستوري (6 إطارات)",
-            "تعليق مثبت + CTA",
-            "تقرير تحليلات أساسي"
+            "نشر على جميع القنوات (Cross‑post)",
+            "إعادة نشر في الستوري",
+            "رابط في البايو (72 ساعة)",
+            "يتضمن كود التفويض (Authorization Code)"
           ]
+        },
+        "usage_rights": {
+          "en": "Usage rights: 30 days",
+          "ar": "حقوق الاستخدام: 30 يوم"
+        },
+        "auth_code": {
+          "en": "Included",
+          "ar": "متضمن"
         }
       },
       {
         "name": {
-          "en": "Launch",
-          "ar": "Launch"
+          "en": "High",
+          "ar": "High"
         },
         "price": {
-          "en": "From 15,000 SAR",
-          "ar": "ابتداءً من 15,000 ريال"
+          "en": "From 12,500 SAR",
+          "ar": "ابتداءً من 12,500 ريال"
         },
         "items": {
           "en": [
-            "3 videos (mix of review + hook)",
-            "Dedicated story day",
-            "Cross‑post to 2 platforms",
-            "Detailed analytics + recommendations"
+            "Post on all social channels (cross-post)",
+            "Repost to Story",
+            "Link in bio (7 days)",
+            "Authorization code included",
+            "Priority scheduling"
           ],
           "ar": [
-            "3 فيديوهات (مراجعة + هوك)",
-            "يوم ستوري مخصص",
-            "نشر على منصتين",
-            "تحليلات مفصلة + توصيات"
+            "نشر على جميع القنوات (Cross‑post)",
+            "إعادة نشر في الستوري",
+            "رابط في البايو (7 أيام)",
+            "يتضمن كود التفويض",
+            "أولوية في الجدولة"
           ]
+        },
+        "usage_rights": {
+          "en": "Usage rights: 90 days",
+          "ar": "حقوق الاستخدام: 90 يوم"
+        },
+        "auth_code": {
+          "en": "Included",
+          "ar": "متضمن"
         }
       }
     ],
     "addons": [
       {
-        "en": "UGC pack (raw footage + edits)",
-        "ar": "باكج UGC (لقطات خام + مونتاج)"
+        "en": "Extended usage rights (add days/months)",
+        "ar": "تمديد حقوق الاستخدام (إضافة أيام/شهور)"
       },
       {
-        "en": "Product photography set",
-        "ar": "تصوير منتجات"
+        "en": "Whitelisting / Spark Ads setup (if applicable)",
+        "ar": "تهيئة Whitelisting / Spark Ads (إن لزم)"
       },
       {
-        "en": "Giveaway / challenge concept",
-        "ar": "تحدي/مسابقة"
+        "en": "Extra link-in-bio duration",
+        "ar": "تمديد مدة الرابط في البايو"
       }
     ]
   }

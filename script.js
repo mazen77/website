@@ -18,40 +18,83 @@ function injectIcons(){
 injectIcons();
 
 /* Matrix rain */
+
 function startMatrix(){
   const c = document.getElementById("matrix");
   if (!c) return;
   const ctx = c.getContext("2d", { alpha:true });
-  const chars = "アイウエオカキクケコサシスセソ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ#$%&*+-/";
-  const fontSize = 16;
-  let drops = [];
+
+  let W=0,H=0,dpr=1;
+  const dots = [];
+  const DOTS = 160;
+  const LINK_DIST = 140;
+
   function resize(){
-    c.width = innerWidth * devicePixelRatio;
-    c.height = innerHeight * devicePixelRatio;
-    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
-    drops = Array(Math.floor(innerWidth / fontSize)).fill(0).map(()=>Math.random()*innerHeight/fontSize);
+    dpr = Math.min(devicePixelRatio, 2);
+    W = innerWidth; H = innerHeight;
+    c.width = W * dpr; c.height = H * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+
+    dots.length = 0;
+    for (let i=0;i<DOTS;i++){
+      dots.push({
+        x: Math.random()*W,
+        y: Math.random()*H,
+        vx: (Math.random()-0.5)*0.25,
+        vy: (Math.random()-0.5)*0.25,
+        r: 1.2 + Math.random()*1.6
+      });
+    }
   }
   addEventListener("resize", resize, {passive:true});
   resize();
 
   function tick(){
     const theme = document.documentElement.dataset.theme || "dark";
-    ctx.fillStyle = (theme === "light") ? "rgba(246,247,251,0.10)" : "rgba(5,6,10,0.10)";
-    ctx.fillRect(0,0,innerWidth, innerHeight);
-    ctx.font = `${fontSize}px monospace`;
-    ctx.fillStyle = (theme === "light") ? "rgba(0,179,92,0.45)" : "rgba(91,255,154,0.55)";
-    for (let i=0;i<drops.length;i++){
-      const text = chars[(Math.random()*chars.length)|0];
-      const x = i * fontSize;
-      const y = drops[i] * fontSize;
-      ctx.fillText(text, x, y);
-      if (y > innerHeight && Math.random() > 0.975) drops[i] = 0;
-      drops[i] += 0.65;
+    ctx.clearRect(0,0,W,H);
+
+    ctx.fillStyle = theme === "light" ? "rgba(246,247,251,0.20)" : "rgba(5,6,10,0.18)";
+    ctx.fillRect(0,0,W,H);
+
+    for (const p of dots){
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -40) p.x = W+40;
+      if (p.x > W+40) p.x = -40;
+      if (p.y < -40) p.y = H+40;
+      if (p.y > H+40) p.y = -40;
     }
+
+    const acc = theme === "light" ? "rgba(0,179,92," : "rgba(91,255,154,";
+    for (let i=0;i<dots.length;i++){
+      for (let j=i+1;j<dots.length;j++){
+        const a = dots[i], b = dots[j];
+        const dx = a.x-b.x, dy = a.y-b.y;
+        const dist = Math.hypot(dx,dy);
+        if (dist < LINK_DIST){
+          const alpha = (1 - dist/LINK_DIST) * 0.28;
+          ctx.strokeStyle = `${acc}${alpha})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath();
+          ctx.moveTo(a.x,a.y);
+          ctx.lineTo(b.x,b.y);
+          ctx.stroke();
+        }
+      }
+    }
+
+    for (const p of dots){
+      const glow = theme === "light" ? "rgba(0,179,92,0.8)" : "rgba(91,255,154,0.85)";
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+
     requestAnimationFrame(tick);
   }
   tick();
 }
+
 startMatrix();
 
 /* Three.js cinematic scene */
@@ -74,7 +117,7 @@ function startThree(){
 
   // Wireframe "matrix core"
   const geo = new THREE.IcosahedronGeometry(1.35, 2);
-  const mat = new THREE.MeshBasicMaterial({ color: 0x5bff9a, wireframe: true, transparent:true, opacity: 0.55 });
+  const mat = new THREE.MeshBasicMaterial({ color: 0x00ffcc, wireframe: true, transparent:true, opacity: 0.32 });
   const core = new THREE.Mesh(geo, mat);
   group.add(core);
 
@@ -92,11 +135,11 @@ function startThree(){
   const cubes = [];
   const cubeGeo = new THREE.BoxGeometry(0.14,0.14,0.14);
   const cubeMat = new THREE.MeshBasicMaterial({ color: 0x5bff9a, transparent:true, opacity: 0.25 });
-  for (let i=0;i<160;i++){
+  for (let i=0;i<90;i++){
     const m = new THREE.Mesh(cubeGeo, cubeMat);
     m.position.set((Math.random()-0.5)*10, (Math.random()-0.5)*6, (Math.random()-0.5)*10);
     m.rotation.set(Math.random()*Math.PI, Math.random()*Math.PI, Math.random()*Math.PI);
-    m.userData.spd = 0.002 + Math.random()*0.004;
+    m.userData.spd = 0.0008 + Math.random()*0.0018;
     group.add(m);
     cubes.push(m);
   }
@@ -403,6 +446,7 @@ async function boot(){
     const items = p.items[document.documentElement.lang] || p.items.en;
     card.innerHTML = `
       <div class="top"><div class="name">${n}</div><div class="price">${price}</div></div>
+      <div class="mk-meta"><span class="mk-pill">${(p.usage_rights?.[document.documentElement.lang] || p.usage_rights?.en || "")}</span><span class="mk-pill">${(p.auth_code?.[document.documentElement.lang] || p.auth_code?.en || "")}</span></div>
       <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
     `;
     mkCards.appendChild(card);
