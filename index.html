@@ -15,8 +15,8 @@
 <body>
 <div id="tea-system" aria-hidden="true"><div id="lottieCup"></div></div>
 
-  <canvas id="matrix" aria-hidden="true"></canvas>
-  
+<canvas id="matrix" aria-hidden="true"></canvas>
+  <div id="three" aria-hidden="true"></div>
   <div class="vignette" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
 
@@ -28,7 +28,7 @@
         <a class="sb-mini" id="emailBtn" aria-label="Email"><span data-ic="mail"></span></a>
         <a class="sb-mini" id="phoneBtn" aria-label="Phone"><span data-ic="phone"></span></a>
         <span class="divider"></span>
-        <button class="toggle" id="themeToggle" type="button"><span data-ic="sunmoon"></span><span data-i18n="toggle_theme">الوضع</span></button>
+        <button class="toggle" id="themeToggle" type="button"><div id="lottieToggle" class="lottie lottie-toggle" aria-hidden="true"></div><span data-ic="sunmoon"></span><span data-i18n="toggle_theme">الوضع</span></button>
         <button class="toggle" data-lang="ar" type="button">AR</button>
         <button class="toggle" data-lang="en" type="button">EN</button>
       </div>
@@ -54,8 +54,10 @@
         <a href="#contact" class="pill" data-i18n="nav_contact">تواصل</a>
       </nav>
     </div>
-  <button id="themeToggleLottie" class="theme-toggle-btn" type="button" aria-label="Toggle theme"><span class="sr-only">Toggle theme</span><div id="lottieToggle" class="lottie lottie-toggle" aria-hidden="true"></div></button>
-<div class="meet-buttons"><a class="btn ghost" target="_blank" rel="noopener" href="https://cal.com/mazen-tech-avrm94/15min">Book 15 min</a><a class="btn primary" target="_blank" rel="noopener" href="https://cal.com/mazen-tech-avrm94/30min">Book 30 min</a></div>
+  <div class="meet-cta">
+<a class="btn ghost" target="_blank" rel="noopener" href="https://cal.com/mazen-tech-avrm94/15min">Book 15 min</a>
+<a class="btn primary" target="_blank" rel="noopener" href="https://cal.com/mazen-tech-avrm94/30min">Book 30 min</a>
+</div>
 </header>
 
   <main class="container">
@@ -101,7 +103,7 @@
       </div>
     </section>
 
-    <div id="lottieDividerTea" class="lottie lottie-divider" aria-hidden="true"></div>
+    <div id="lottieLoader" class="lottie lottie-loader" aria-hidden="true"></div>
 <section id="websites" class="section">
       <div class="section-head">
         <h2 data-i18n="websites_title">Websites I worked on</h2>
@@ -133,7 +135,19 @@
 
     <section id="mediakit" class="section">
       <div class="section-head">
-        <h2 data-i18n="mk_title">Media Kit</h2>
+        
+<div class="meet-cta media-kit-cta">
+  <div class="meet-cta__text">
+    <h3>Book a meeting</h3>
+    <p>Choose a quick call to align on scope, timeline, and deliverables.</p>
+  </div>
+  <div class="meet-cta__buttons">
+    <a class="btn primary" target="_blank" rel="noopener" href="https://cal.com/mazen-tech-avrm94/15min">Book 15 min</a>
+    <a class="btn ghost" target="_blank" rel="noopener" href="https://cal.com/mazen-tech-avrm94/30min">Book 30 min</a>
+  </div>
+</div>
+
+<h2 data-i18n="mk_title">Media Kit</h2>
         <p data-i18n="mk_sub">باقات تعاون جاهزة + إضافات… بشكل واضح ومقنع.</p>
       </div>
 
@@ -191,8 +205,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <!-- Three.js for 3D -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
 <script src="script.js"></script>
 </body>
