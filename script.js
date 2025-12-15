@@ -515,24 +515,18 @@ $$(".toggle[data-lang]").forEach(btn=>btn.addEventListener("click", ()=>{
   setTimeout(()=>boot(), 0);
 }));
 
-function loadLottie(id,file,loop=true,autoplay=true){
- const el=document.getElementById(id);
- if(!el||typeof lottie==='undefined')return null;
- return lottie.loadAnimation({container:el,renderer:'svg',loop,autoplay,path:'assets/lottie/'+file});
-}
-const cup=loadLottie('lottieCup','Milk Cup Animated.json',false,false);
-loadLottie('lottieSpin','Spin.json');
-loadLottie('lottieToggle','Toogle.json');
-loadLottie('lottieLoader','Tea-loader.json');
-loadLottie('lottieCode','Code-dark.json');
-loadLottie('lottieTabs','IOS-tabs.json');
-
-if(cup){
- cup.addEventListener('DOMLoaded',()=>{
-  window.addEventListener('scroll',()=>{
-   const max=document.body.scrollHeight-innerHeight||1;
-   const p=Math.min(1,scrollY/max);
-   cup.goToAndStop(p*cup.getDuration(true),true);
-  },{passive:true});
- });
-}
+const cup=lottie.loadAnimation({
+ container:document.getElementById('lottieCup'),
+ renderer:'svg',
+ loop:false,
+ autoplay:false,
+ path:'assets/lottie/MilkCup.json'
+});
+cup.addEventListener('DOMLoaded',()=>{
+ const total=cup.getDuration(true);
+ window.addEventListener('scroll',()=>{
+  const max=document.body.scrollHeight-innerHeight||1;
+  const p=Math.min(1,scrollY/max);
+  cup.goToAndStop(p*total,true);
+ },{passive:true});
+});

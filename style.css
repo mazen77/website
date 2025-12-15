@@ -411,6 +411,15 @@ html[data-theme="light"] body::after{ opacity:.12; }
   font-size: 12px;
 }
 
-.hero-lottie{position:absolute;inset:0;pointer-events:none}
-#lottieCup{position:absolute;width:420px;right:8%;top:50%;transform:translateY(-50%)}
-#lottieSpin{position:absolute;width:520px;opacity:.2;right:4%;top:50%;transform:translateY(-50%)}
+#tea-system{
+ position:fixed;
+ top:50%;
+ left:50%;
+ transform:translate(-50%,-50%);
+ width:min(420px,70vw);
+ pointer-events:none;
+ z-index:5;
+}
+#lottieCup, #lottieCup svg{
+ background:transparent !important;
+}
