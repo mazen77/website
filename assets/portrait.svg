@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <defs>
+    <radialGradient id="bg" cx="70%" cy="30%" r="80%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#0a0c10" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="w" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#cfd8ff" stop-opacity="0.35"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="760" fill="#0a0c10"/>
+  <rect width="1200" height="760" fill="url(#bg)"/>
+  <g opacity="0.9">
+    <circle cx="860" cy="250" r="210" fill="rgba(255,255,255,0.05)"/>
+    <circle cx="860" cy="250" r="140" fill="rgba(255,255,255,0.06)"/>
+  </g>
+  <g transform="translate(210,130)">
+    <path d="M290 430c-72 0-130-58-130-130s58-130 130-130 130 58 130 130-58 130-130 130Z" fill="rgba(255,255,255,0.06)"/>
+    <path d="M290 422c-62 0-112-50-112-112s50-112 112-112 112 50 112 112-50 112-112 112Z" fill="rgba(255,255,255,0.08)"/>
+    <path d="M230 305c18-44 72-70 120-52 18 7 32 19 41 35 7 13 9 28 5 43-6 26-22 38-47 44-18 4-38 5-56 1-29-7-56-28-63-54Z" fill="url(#w)" opacity="0.12"/>
+    <path d="M178 540c24-60 79-102 142-102s118 42 142 102" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="10" stroke-linecap="round"/>
+    <text x="0" y="40" fill="rgba(255,255,255,0.9)" font-family="Inter, system-ui" font-size="28" font-weight="700">3D‑ish portrait</text>
+    <text x="0" y="78" fill="rgba(166,174,187,0.95)" font-family="Inter, system-ui" font-size="16">Replace with your real photo anytime.</text>
+  </g>
+</svg>
