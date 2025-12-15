@@ -530,22 +530,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Center cup: scroll-driven
-  const cup = load("lottieCup", "milk-cup.json", { loop: false, autoplay: false });
-  if (cup) {
-    cup.addEventListener("DOMLoaded", () => {
-      const total = Math.max(1, cup.getDuration(true)); // frames
-      const onScroll = () => {
-        const doc = document.documentElement;
-        const max = (doc.scrollHeight - window.innerHeight) || 1;
-        const p = Math.min(1, Math.max(0, window.scrollY / max));
-        cup.goToAndStop(p * total, true);
-      };
-      window.addEventListener("scroll", onScroll, { passive: true });
-      onScroll();
-    });
-  }
-
   // Ambient lotties
   load("lottieLoader", "tea-loader.json", { loop: true, autoplay: true });
   load("lottieCode", "code-dark.json", { loop: true, autoplay: true });
@@ -575,6 +559,54 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleAnim.setDirection(isLight ? -1 : 1);
       toggleAnim.play();
       // NOTE: your existing theme toggler should still run. If not, you'll still get the lottie motion.
+    });
+  }
+});
+
+/* === Theme toggle: robust animation + theme switching === */
+document.addEventListener("DOMContentLoaded", () => {
+  const btn = document.getElementById("themeToggleLottie") || document.getElementById("themeToggle");
+  const animEl = document.getElementById("lottieToggle");
+  const setTheme = (t) => document.documentElement.setAttribute("data-theme", t);
+  const getTheme = () => document.documentElement.getAttribute("data-theme") || "dark";
+
+  let toggleAnim = null;
+  if (animEl && typeof lottie !== "undefined") {
+    toggleAnim = lottie.loadAnimation({
+      container: animEl,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      path: "assets/lottie/toggle.json"
+    });
+  }
+
+  const syncFrame = (isLight) => {
+    if (!toggleAnim) return;
+    const total = Math.max(1, toggleAnim.getDuration(true));
+    toggleAnim.goToAndStop(isLight ? total : 0, true);
+  };
+
+  if (toggleAnim) {
+    toggleAnim.addEventListener("DOMLoaded", () => {
+      syncFrame(getTheme() === "light");
+    });
+  }
+
+  if (btn) {
+    btn.addEventListener("click", () => {
+      const isLight = getTheme() === "light";
+      const next = isLight ? "dark" : "light";
+      setTheme(next);
+
+      if (toggleAnim) {
+        const total = Math.max(1, toggleAnim.getDuration(true));
+        // play from current end to other end
+        toggleAnim.stop();
+        toggleAnim.goToAndStop(isLight ? total : 0, true);
+        toggleAnim.setDirection(isLight ? -1 : 1);
+        toggleAnim.play();
+      }
     });
   }
 });

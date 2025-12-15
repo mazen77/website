@@ -411,19 +411,6 @@ html[data-theme="light"] body::after{ opacity:.12; }
   font-size: 12px;
 }
 
-/* --- Lottie System (GitHub-ready) --- */
-#tea-system{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(460px, 72vw);
-  pointer-events: none;
-  z-index: 8;
-  opacity: .95;
-}
-#lottieCup, #lottieCup svg{ background: transparent !important; }
-
 .lottie{ pointer-events:none; }
 .lottie-toggle{ width: 34px; height: 34px; }
 .lottie-loader{ width: 140px; margin: 26px auto; opacity: .55; }
@@ -438,3 +425,34 @@ html[data-theme="light"] body::after{ opacity:.12; }
   opacity: .14;
 }
 html[dir="ltr"] .lottie-spin{ left: 6%; right:auto; }
+
+/* --- Fixes: meeting buttons alignment + lottie transparency + theme toggle --- */
+.meet-buttons{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:flex-start;
+  flex-wrap:wrap;
+}
+@media (max-width:520px){
+  .meet-buttons{justify-content:center}
+  .meet-buttons a{flex:1; text-align:center}
+}
+
+.lottie-loader, #lottieLoader, #lottieLoader svg{
+  background: transparent !important;
+}
+
+.theme-toggle-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.14);
+  background: rgba(0,0,0,.18);
+  cursor:pointer;
+  padding:0;
+}
+.theme-toggle-btn .lottie-toggle{width:34px;height:34px;opacity:1}
