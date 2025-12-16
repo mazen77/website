@@ -510,3 +510,94 @@ header.topbar, .topbar, header{
 
 /* Remove divider lottie (the small cup/tea icon) */
 .lottie-divider{ display:none !important; }
+
+/* === Theme + Typography Overrides (v3) === */
+:root{
+  --bg:#070a0d;
+  --fg:#e9f0f2;
+  --muted:rgba(233,240,242,.72);
+  --card:rgba(12,16,22,.72);
+  --card2:rgba(14,18,26,.60);
+  --line:rgba(255,255,255,.10);
+  --acc:#33f2a0;
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
+}
+html[data-theme="light"]{
+  --bg:#f6f7fb;
+  --fg:#0b1220;
+  --muted:rgba(11,18,32,.70);
+  --card:rgba(255,255,255,.82);
+  --card2:rgba(255,255,255,.70);
+  --line:rgba(11,18,32,.12);
+  --acc:#0ea56a;
+  --shadow: 0 18px 60px rgba(10,20,40,.18);
+}
+
+/* Typography system */
+html{font-size:16px}
+body{
+  background:var(--bg) !important;
+  color:var(--fg) !important;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height:1.6;
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+html[dir="rtl"] body{
+  font-family: "Tajawal","Cairo","Noto Kufi Arabic", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  letter-spacing: 0;
+}
+h1,h2,h3,.name{
+  line-height:1.12;
+  letter-spacing:-.02em;
+}
+html[dir="rtl"] h1, html[dir="rtl"] h2, html[dir="rtl"] h3, html[dir="rtl"] .name{
+  letter-spacing:0;
+}
+h1{font-size:clamp(34px,5vw,64px); font-weight:800}
+h2{font-size:clamp(22px,3.2vw,36px); font-weight:800}
+h3{font-size:clamp(16px,2.2vw,22px); font-weight:750}
+p,li{color:var(--muted)}
+.small, .meta, .sub, .hint{color:var(--muted) !important}
+a{color:inherit}
+
+/* Buttons */
+.btn.primary{background:var(--acc) !important; color:#04150f !important}
+.btn.ghost{border:1px solid var(--line) !important; background:rgba(255,255,255,.04) !important; color:var(--fg) !important}
+html[data-theme="light"] .btn.ghost{background:rgba(11,18,32,.04) !important}
+
+/* Cards / surfaces */
+.card, .panel, .glass, .quick, .mk-book, .site-card, .pill, .chip{
+  background:var(--card) !important;
+  border:1px solid var(--line) !important;
+  box-shadow:var(--shadow);
+}
+html[data-theme="light"] .card,
+html[data-theme="light"] .panel,
+html[data-theme="light"] .glass,
+html[data-theme="light"] .quick,
+html[data-theme="light"] .mk-book,
+html[data-theme="light"] .site-card,
+html[data-theme="light"] .pill,
+html[data-theme="light"] .chip{
+  background:var(--card) !important;
+}
+
+/* Sticky header uses theme vars */
+.topbar{
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 86%, transparent), color-mix(in srgb, var(--bg) 45%, transparent)) !important;
+  border-bottom:1px solid var(--line) !important;
+}
+
+/* Make section titles breathe */
+.section{padding-top:72px}
+.section .section-head{margin-bottom:18px}
+.section .section-head p{max-width:70ch}
+
+/* Toggle button clarity */
+.toggle{
+  border:1px solid var(--line) !important;
+  background: color-mix(in srgb, var(--card) 88%, transparent) !important;
+  color: var(--fg) !important;
+}

@@ -201,10 +201,15 @@ function setTheme(t){
   localStorage.setItem("mazen_theme", t);
 }
 const savedTheme = localStorage.getItem("mazen_theme");
-if (savedTheme) setTheme(savedTheme);
+if (savedTheme) { setTheme(savedTheme); document.body.classList.toggle('theme-light', savedTheme==='light'); document.documentElement.style.colorScheme = savedTheme; }
 $("#themeToggle")?.addEventListener("click", ()=>{
   const cur = document.documentElement.dataset.theme || "dark";
-  setTheme(cur === "dark" ? "light" : "dark");
+  const next = (cur === "dark" ? "light" : "dark");
+  setTheme(next);
+  document.body.classList.toggle('theme-light', next === 'light');
+  // force repaint for some browsers
+  document.documentElement.style.colorScheme = next;
+
 });
 
 /* i18n strings */
