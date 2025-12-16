@@ -555,9 +555,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Dividers (same json, multiple containers)
-  ["lottieDiv1","lottieDiv2","lottieDiv3"].forEach((id) => load(id, "divider.json", { loop: true, autoplay: true }));
-
-  // Media kit ambient (subtle)
+  // dividers disabled
+// Media kit ambient (subtle)
   load("lottieAmbient", "ambient.json", { loop: true, autoplay: true });
 
   // Theme toggle with animated lottie

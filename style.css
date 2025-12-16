@@ -500,3 +500,13 @@ body{ background:var(--bg); color:var(--fg); }
 
 .lottie-toggle-wrap{ display:inline-block; width:28px; height:28px; vertical-align:middle; margin-inline-end:8px; }
 .lottie-toggle-wrap svg{ background:transparent !important; }
+
+/* Sticky header fallback */
+header.topbar, .topbar, header{
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+/* Remove divider lottie (the small cup/tea icon) */
+.lottie-divider{ display:none !important; }
