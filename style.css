@@ -167,8 +167,8 @@ h1{margin:14px 0 10px; font-size:54px; line-height:1.02; letter-spacing:-.02em}
   background: rgba(255,255,255,.06);
   box-shadow: 0 12px 40px rgba(0,0,0,.18);
 }
-.btn.primary{background:var(--acc); color:#04150f;}
-.btn.ghost{border:1px solid var(--line); color:var(--fg); background:rgba(255,255,255,.04);}
+.btn.primary{border-color: rgba(91,255,154,.45); background: rgba(91,255,154,.14)}
+.btn.ghost{background: rgba(255,255,255,.04)}
 .metrics{display:flex; gap:10px; flex-wrap:wrap; margin-top:18px}
 .metric{
   padding:12px 14px; border-radius: 18px;
@@ -411,86 +411,92 @@ html[data-theme="light"] body::after{ opacity:.12; }
   font-size: 12px;
 }
 
-.lottie{ pointer-events:none; }
-.lottie-toggle{ width: 34px; height: 34px; }
-.lottie-loader{ width: 140px; margin: 26px auto; opacity: .55; }
-.lottie-code{ width: 160px; margin: 18px auto; opacity: .35; }
-.lottie-tabs{ width: 220px; margin: 0 auto; opacity: .45; }
-.lottie-spin{
-  position:absolute;
-  right: 6%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: min(560px, 82vw);
-  opacity: .14;
+/* Blueprint Lottie */
+:root{
+  --bg:#070a0d;
+  --fg:#e9f0f2;
+  --muted:rgba(233,240,242,.72);
+  --line:rgba(255,255,255,.10);
+  --acc:#33f2a0;
+  --card:rgba(12,16,22,.70);
+  --shadow: 0 18px 60px rgba(0,0,0,.55);
 }
-html[dir="ltr"] .lottie-spin{ left: 6%; right:auto; }
+html[data-theme="light"]{
+  --bg:#f6f7fb;
+  --fg:#0b1220;
+  --muted:rgba(11,18,32,.70);
+  --line:rgba(11,18,32,.12);
+  --acc:#0ea56a;
+  --card:rgba(255,255,255,.78);
+  --shadow: 0 18px 60px rgba(10,20,40,.18);
+}
+body{ background:var(--bg); color:var(--fg); }
 
-/* --- Fixes: meeting buttons alignment + lottie transparency + theme toggle --- */
-.meet-buttons{
+/* Signature cup: fixed centered, subtle */
+#tea-system{
+  position:fixed;
+  inset:0;
   display:flex;
-  gap:12px;
-  align-items:center;
-  justify-content:flex-start;
-  flex-wrap:wrap;
-}
-@media (max-width:520px){
-  .meet-buttons{justify-content:center}
-  .meet-buttons a{flex:1; text-align:center}
-}
-
-.lottie-loader, #lottieLoader, #lottieLoader svg{
-  background: transparent !important;
-}
-
-.theme-toggle-btn{
-  display:inline-flex;
   align-items:center;
   justify-content:center;
-  width:44px;
-  height:44px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.14);
-  background: rgba(0,0,0,.18);
-  cursor:pointer;
-  padding:0;
+  pointer-events:none;
+  z-index:3;
 }
-.theme-toggle-btn .lottie-toggle{width:34px;height:34px;opacity:1}
+#lottieCup{
+  width:min(520px, 76vw);
+  opacity:.18;
+  filter: drop-shadow(0 12px 50px rgba(0,0,0,.35));
+}
+#lottieCup, #lottieCup svg{ background:transparent !important; }
 
-.meet-cta{
-  width:min(1100px, calc(100% - 40px));
-  margin: 28px auto 10px auto;
-  padding: 18px 18px;
+/* Dividers */
+.lottie-divider{
+  width:140px;
+  height:140px;
+  margin: 16px auto 0 auto;
+  opacity:.22;
+  pointer-events:none;
+}
+.lottie-divider, .lottie-divider svg{ background:transparent !important; }
+
+/* Media kit ambient */
+.lottie-ambient{
+  width:180px;
+  height:180px;
+  margin: 8px 0 6px 0;
+  opacity:.18;
+}
+.lottie-ambient, .lottie-ambient svg{ background:transparent !important; }
+
+/* Media kit booking CTA */
+.mk-book{
+  margin-top:14px;
   border:1px solid var(--line);
-  background: linear-gradient(135deg, rgba(51,242,160,.10), rgba(77,230,255,.06));
-  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(51,242,160,.10), rgba(255,255,255,.02));
+  border-radius: 16px;
+  padding: 14px 14px;
   box-shadow: var(--shadow);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(12px);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:16px;
+  gap:12px;
 }
-.meet-cta__text h3{margin:0 0 6px 0; font-size:18px;}
-.meet-cta__text p{margin:0; color:var(--muted); font-size:14px; max-width:520px;}
-.meet-cta__buttons{display:flex; gap:10px; align-items:center; justify-content:flex-end; flex-wrap:wrap}
-.meet-cta__buttons .btn{min-width:140px; text-align:center}
+.mk-book__title{ font-weight:700; }
+.mk-book__sub{ color:var(--muted); font-size:13px; margin-top:4px; }
+.mk-book__actions{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+.mk-book__actions .btn{ min-width:140px; text-align:center; }
+
+/* Buttons: align with theme */
+.btn.primary{ background: var(--acc); color:#04150f; }
+.btn.ghost{ border:1px solid var(--line); color: var(--fg); background: rgba(255,255,255,.04); }
+
 @media (max-width:720px){
-  .meet-cta{flex-direction:column; align-items:flex-start}
-  .meet-cta__buttons{width:100%; justify-content:flex-start}
-  .meet-cta__buttons .btn{flex:1}
+  #lottieCup{ width:min(560px, 86vw); opacity:.16; }
+  .mk-book{ flex-direction:column; align-items:flex-start; }
+  .mk-book__actions{ width:100%; }
+  .mk-book__actions .btn{ flex:1; }
 }
 
-#tea-system{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: min(440px, 76vw);
-  pointer-events: none;
-  z-index: 7;
-  filter: drop-shadow(0 12px 40px rgba(0,0,0,.35));
-  opacity: .95;
-}
-#lottieCup, #lottieCup svg{background: transparent !important;}
-html[data-theme="light"] #tea-system{filter: drop-shadow(0 12px 28px rgba(0,0,0,.12)); opacity:.85;}
+.lottie-toggle-wrap{ display:inline-block; width:28px; height:28px; vertical-align:middle; margin-inline-end:8px; }
+.lottie-toggle-wrap svg{ background:transparent !important; }
