@@ -601,3 +601,28 @@ html[data-theme="light"] .chip{
   background: color-mix(in srgb, var(--card) 88%, transparent) !important;
   color: var(--fg) !important;
 }
+
+
+
+/* ===============================
+   Scroll-driven Lottie embeds
+   =============================== */
+.scroll-lottie{
+  width: 100%;
+  max-width: 520px;
+  height: 180px;
+  margin-inline: auto;
+  margin-top: 14px;
+  opacity: 0.95;
+  pointer-events: none;
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.18));
+}
+:root[data-theme="light"] .scroll-lottie{
+  filter: drop-shadow(0 10px 30px rgba(0,0,0,0.10));
+}
+@media (max-width: 640px){
+  .scroll-lottie{ height: 150px; max-width: 92vw; }
+}
+@media (prefers-reduced-motion: reduce){
+  .scroll-lottie{ display:none; }
+}

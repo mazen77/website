@@ -1,3 +1,31 @@
+
+// ===============================
+// THEME SWITCHER (FIXED)
+// ===============================
+const THEME_KEY = "site-theme";
+
+function getTheme() {
+  return localStorage.getItem(THEME_KEY) || "dark";
+}
+
+function setTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem(THEME_KEY, theme);
+}
+
+// Apply theme on load
+setTheme(getTheme());
+
+// Toggle button
+const themeBtn = document.getElementById("themeToggle");
+if (themeBtn) {
+  themeBtn.addEventListener("click", () => {
+    const next = getTheme() === "dark" ? "light" : "dark";
+    setTheme(next);
+  });
+}
+
+
 /* Mazen cinematic bilingual site */
 const $ = (q, el=document) => el.querySelector(q);
 const $$ = (q, el=document) => [...el.querySelectorAll(q)];
@@ -523,13 +551,8 @@ $$(".toggle[data-lang]").forEach(btn=>btn.addEventListener("click", ()=>{
 /* === Blueprint: Lottie System === */
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.documentElement;
-
-  // Theme persistence + default
-  const saved = localStorage.getItem("theme");
-  if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
-
-  const getTheme = () => root.getAttribute("data-theme") || "dark";
-  const setTheme = (t) => { root.setAttribute("data-theme", t); localStorage.setItem("theme", t); };
+  // Theme is handled by the global getTheme()/setTheme() (see top of file)
+  setTheme(getTheme());
 
   const load = (id, file, opts = {}) => {
     const el = document.getElementById(id);
@@ -542,6 +565,84 @@ document.addEventListener("DOMContentLoaded", () => {
       path: "assets/lottie/" + file,
     });
   };
+
+  // ===============================
+  // Scroll-driven Lottie (per section)
+  // ===============================
+  const prefersReducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function clamp01(x){ return Math.max(0, Math.min(1, x)); }
+
+  function initScrollLotties(){
+    if (prefersReducedMotion) return;
+    if (typeof lottie === "undefined") return;
+
+    const nodes = document.querySelectorAll('[data-lottie][data-scroll="true"]');
+    if (!nodes.length) return;
+
+    const items = [];
+    nodes.forEach((el) => {
+      const file = el.getAttribute("data-lottie");
+      if (!file) return;
+
+      const anim = lottie.loadAnimation({
+        container: el,
+        renderer: "svg",
+        loop: false,
+        autoplay: false,
+        path: "assets/lottie/" + file,
+      });
+
+      items.push({ el, anim, active: false });
+    });
+
+    // Activate only when near viewport (performance)
+    const io = "IntersectionObserver" in window ? new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        const item = items.find(it => it.el === e.target);
+        if (!item) return;
+        item.active = e.isIntersecting;
+        if (item.active) requestTick();
+      });
+    }, { root: null, rootMargin: "250px 0px 250px 0px", threshold: 0.01 }) : null;
+
+    if (io) items.forEach(it => io.observe(it.el));
+    else items.forEach(it => it.active = true);
+
+    let raf = 0;
+    function requestTick(){
+      if (raf) return;
+      raf = requestAnimationFrame(update);
+    }
+
+    function update(){
+      raf = 0;
+      const vh = window.innerHeight || 1;
+
+      items.forEach(({ el, anim, active }) => {
+        if (!active || !anim) return;
+
+        const section = el.closest("section") || el;
+        const r = section.getBoundingClientRect();
+
+        // Progress 0 when section top is at bottom of viewport,
+        // Progress 1 when section bottom is at top of viewport.
+        const start = vh;
+        const end = -r.height;
+        const p = clamp01((start - r.top) / (start - end));
+
+        const tf = anim.totalFrames || 1;
+        anim.goToAndStop(p * (tf - 1), true);
+      });
+    }
+
+    addEventListener("scroll", requestTick, { passive: true });
+    addEventListener("resize", requestTick, { passive: true });
+    requestTick();
+  }
+
+  initScrollLotties();
+
 
   // Signature cup: scroll-driven, centered
   const cup = load("lottieCup", "milk-cup.json", { loop: false, autoplay: false });
