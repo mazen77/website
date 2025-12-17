@@ -1,3 +1,363 @@
 {
-  "note": "Replace with your content"
+  "name": {
+    "en": "Mazen Bassiso",
+    "ar": "مازن بسيسو"
+  },
+  "title": {
+    "en": "Senior Webmaster • Full-Stack Web Management • Tech Creator",
+    "ar": "ويب ماستر أول • إدارة ويب شاملة • صانع محتوى تقني"
+  },
+  "location": {
+    "en": "Riyadh, Saudi Arabia",
+    "ar": "الرياض، السعودية"
+  },
+  "email": "mazen.bassiso@gmail.com",
+  "phone": "+966537751006",
+  "linktree": "https://linktr.ee/mazen_bass",
+  "social": {
+    "instagram": {
+      "label": "@mazz_tech",
+      "url": "https://instagram.com/mazz_tech",
+      "count": "176.3K"
+    },
+    "tiktok": {
+      "label": "@maz_tech",
+      "url": "https://tiktok.com/@maz_tech",
+      "count": "700K+"
+    },
+    "youtube": {
+      "label": "@mazentech1078",
+      "url": "https://www.youtube.com/@mazentech1078",
+      "count": "—"
+    },
+    "snapchat": {
+      "label": "Mazen Bass",
+      "url": "https://www.snapchat.com",
+      "count": ""
+    },
+    "linkedin": {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com",
+      "count": ""
+    }
+  },
+  "metrics": [
+    {
+      "k": "8+",
+      "en": "Years experience",
+      "ar": "سنوات خبرة"
+    },
+    {
+      "k": "+50%",
+      "en": "Faster load times",
+      "ar": "تحسين سرعة التحميل"
+    },
+    {
+      "k": "−25%",
+      "en": "Less downtime",
+      "ar": "تقليل التوقف"
+    },
+    {
+      "k": "+40%",
+      "en": "Engagement uplift",
+      "ar": "رفع التفاعل"
+    },
+    {
+      "k": "10M+",
+      "en": "Monthly content views",
+      "ar": "مشاهدات شهرية"
+    }
+  ],
+  "websites": [
+    {
+      "name": "naqi.sa",
+      "url": "https://naqi.sa",
+      "tag": {
+        "en": "Website / Platform Ops",
+        "ar": "موقع / تشغيل منصة"
+      },
+      "desc": {
+        "en": "Ops + performance + analytics improvements.",
+        "ar": "تحسينات تشغيل وأداء وتحليلات."
+      }
+    },
+    {
+      "name": "diva.sa",
+      "url": "https://diva.sa",
+      "tag": {
+        "en": "E-commerce / Performance",
+        "ar": "تجارة إلكترونية / أداء"
+      },
+      "desc": {
+        "en": "Performance, stability, and tracking enhancements.",
+        "ar": "تعزيز الأداء والاستقرار والتتبع."
+      }
+    },
+    {
+      "name": "alkhayalksa.net",
+      "url": "https://alkhayalksa.net",
+      "tag": {
+        "en": "Website / Maintenance",
+        "ar": "موقع / صيانة"
+      },
+      "desc": {
+        "en": "Maintenance, updates, and technical optimizations.",
+        "ar": "صيانة وتحديثات وتحسينات تقنية."
+      }
+    },
+    {
+      "name": "eqlaa.net",
+      "url": "https://eqlaa.net",
+      "tag": {
+        "en": "Website / SEO Setup",
+        "ar": "موقع / تهيئة SEO"
+      },
+      "desc": {
+        "en": "SEO/analytics setup and speed improvements.",
+        "ar": "تهيئة SEO/Analytics وتحسين السرعة."
+      }
+    },
+    {
+      "name": "thezawaya.com",
+      "url": "https://thezawaya.com/",
+      "tag": {
+        "en": "Website / UI & Ops",
+        "ar": "موقع / واجهة وتشغيل"
+      },
+      "desc": {
+        "en": "UI/UX refinements and operational improvements.",
+        "ar": "تحسينات واجهة وتجربة وتشغيل."
+      }
+    },
+    {
+      "name": "themiran.net",
+      "url": "https://themiran.net/",
+      "tag": {
+        "en": "Website / Performance",
+        "ar": "موقع / أداء"
+      },
+      "desc": {
+        "en": "Performance tuning and reliability improvements.",
+        "ar": "ضبط أداء وتحسين الاعتمادية."
+      }
+    },
+    {
+      "name": "ja4t.org",
+      "url": "https://ja4t.org/",
+      "tag": {
+        "en": "Organization Website",
+        "ar": "موقع منظمة"
+      },
+      "desc": {
+        "en": "Content + structure + stability upgrades.",
+        "ar": "ترقية المحتوى والبنية والاستقرار."
+      }
+    },
+    {
+      "name": "kq-lawfirm.com",
+      "url": "https://kq-lawfirm.com/",
+      "tag": {
+        "en": "Law Firm Website",
+        "ar": "موقع مكتب محاماة"
+      },
+      "desc": {
+        "en": "Professional website operations and optimization.",
+        "ar": "تشغيل وتحسين موقع احترافي."
+      }
+    }
+  ],
+  "experience": [
+    {
+      "company": "Rose Holding",
+      "role": {
+        "en": "Senior Webmaster (Full‑Stack Web Management)",
+        "ar": "ويب ماستر أول (إدارة ويب شاملة)"
+      },
+      "date": {
+        "en": "Jul 2024 – Present",
+        "ar": "يوليو 2024 – الآن"
+      },
+      "bullets": {
+        "en": [
+          "Own end‑to‑end platform operations: servers, APIs, payment gateways, mobile integrations, SEO/analytics.",
+          "Drive performance and reliability improvements for high‑traffic properties.",
+          "Security hardening and monitoring to keep systems stable and safe."
+        ],
+        "ar": [
+          "إدارة كاملة للمنصة: سيرفرات، APIs، بوابات دفع، تكاملات الجوال، SEO/Analytics.",
+          "تحسين الأداء والاعتمادية لمواقع عالية الزيارات.",
+          "تعزيز الأمان والمراقبة لضمان الاستقرار."
+        ]
+      }
+    }
+  ],
+  "education": [
+    {
+      "en": "BSc in IT (Information Systems Security) • 2013–2017",
+      "ar": "بكالوريوس تقنية معلومات (أمن نظم المعلومات) • 2013–2017"
+    }
+  ],
+  "certs": [
+    "Google Ads Search",
+    "Google Analytics Individual Qualification",
+    "Cisco Intro to Cybersecurity",
+    "Google Creative Certification",
+    "Heart Saver"
+  ],
+  "brands": [
+    "Amazon",
+    "Alexa",
+    "Google",
+    "Midea",
+    "PCD",
+    "(add more)"
+  ],
+  "links": [
+    {
+      "name": {
+        "en": "AI Course – Hsoub Academy",
+        "ar": "دورة الذكاء الاصطناعي – أكاديمية حسوب"
+      },
+      "url": "https://academy.hsoub.com"
+    },
+    {
+      "name": {
+        "en": "Bakkah – In‑demand courses",
+        "ar": "Bakkah – الدورات المطلوبة بسوق العمل"
+      },
+      "url": "https://bakkah.com"
+    },
+    {
+      "name": {
+        "en": "AliExpress – Affiliate (example)",
+        "ar": "AliExpress – أفلييت (مثال)"
+      },
+      "url": "https://s.click.aliexpress.com"
+    },
+    {
+      "name": {
+        "en": "Snapchat Eid Filter (example)",
+        "ar": "فلتر عيديات السناب (مثال)"
+      },
+      "url": "https://www.snapchat.com"
+    }
+  ],
+  "mediaKit": {
+    "audience": {
+      "en": "GCC & MENA tech audience (TikTok, Instagram, YouTube, Snapchat).",
+      "ar": "جمهور تقني في الخليج والشرق الأوسط (تيك توك، إنستغرام، يوتيوب، سناب)."
+    },
+    "packages": [
+      {
+        "name": {
+          "en": "Low",
+          "ar": "Low"
+        },
+        "price": {
+          "en": "From 2,500 SAR",
+          "ar": "ابتداءً من 2,500 ريال"
+        },
+        "items": {
+          "en": [
+            "Post on all social channels (cross-post)",
+            "Repost to Story",
+            "Link in bio (24h)"
+          ],
+          "ar": [
+            "نشر على جميع قنوات السوشيال (Cross‑post)",
+            "إعادة نشر في الستوري",
+            "رابط في البايو (24 ساعة)"
+          ]
+        },
+        "usage_rights": {
+          "en": "Usage rights: 7 days",
+          "ar": "حقوق الاستخدام: 7 أيام"
+        },
+        "auth_code": {
+          "en": "Not included",
+          "ar": "غير متضمن"
+        }
+      },
+      {
+        "name": {
+          "en": "Mid",
+          "ar": "Mid"
+        },
+        "price": {
+          "en": "From 6,500 SAR",
+          "ar": "ابتداءً من 6,500 ريال"
+        },
+        "items": {
+          "en": [
+            "Post on all social channels (cross-post)",
+            "Repost to Story",
+            "Link in bio (72h)",
+            "Authorization code included"
+          ],
+          "ar": [
+            "نشر على جميع القنوات (Cross‑post)",
+            "إعادة نشر في الستوري",
+            "رابط في البايو (72 ساعة)",
+            "يتضمن كود التفويض (Authorization Code)"
+          ]
+        },
+        "usage_rights": {
+          "en": "Usage rights: 30 days",
+          "ar": "حقوق الاستخدام: 30 يوم"
+        },
+        "auth_code": {
+          "en": "Included",
+          "ar": "متضمن"
+        }
+      },
+      {
+        "name": {
+          "en": "High",
+          "ar": "High"
+        },
+        "price": {
+          "en": "From 12,500 SAR",
+          "ar": "ابتداءً من 12,500 ريال"
+        },
+        "items": {
+          "en": [
+            "Post on all social channels (cross-post)",
+            "Repost to Story",
+            "Link in bio (7 days)",
+            "Authorization code included",
+            "Priority scheduling"
+          ],
+          "ar": [
+            "نشر على جميع القنوات (Cross‑post)",
+            "إعادة نشر في الستوري",
+            "رابط في البايو (7 أيام)",
+            "يتضمن كود التفويض",
+            "أولوية في الجدولة"
+          ]
+        },
+        "usage_rights": {
+          "en": "Usage rights: 90 days",
+          "ar": "حقوق الاستخدام: 90 يوم"
+        },
+        "auth_code": {
+          "en": "Included",
+          "ar": "متضمن"
+        }
+      }
+    ],
+    "addons": [
+      {
+        "en": "Extended usage rights (add days/months)",
+        "ar": "تمديد حقوق الاستخدام (إضافة أيام/شهور)"
+      },
+      {
+        "en": "Whitelisting / Spark Ads setup (if applicable)",
+        "ar": "تهيئة Whitelisting / Spark Ads (إن لزم)"
+      },
+      {
+        "en": "Extra link-in-bio duration",
+        "ar": "تمديد مدة الرابط في البايو"
+      }
+    ]
+  }
 }
